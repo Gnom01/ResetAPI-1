@@ -10,6 +10,7 @@ namespace ResetAPI
             InitializeComponent();
         }
 
+
         private void StartButton_Click(object sender, EventArgs e)
         {   // создаем переменную типа ресетклиента 
             ResetClient rClient = new ResetClient();
