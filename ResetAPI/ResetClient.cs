@@ -29,7 +29,6 @@ namespace ResetAPI
         public string endPoint { get; set; }
         // создание переменной для метода енум перечесления команд
         public httpVerb httpMethod { get; set; }
-
         public autenfikationType authType { get; set; }
         public autenfikationTechnique autTrech { get; set; }
         public string userName { get; set; }
@@ -40,7 +39,7 @@ namespace ResetAPI
         public ResetClient()
         {
             endPoint = string.Empty;
-            httpMethod = httpVerb.GET;
+            httpMethod = httpVerb.POST;
         }
         //метод связи с базой данных
         public string makeRequest()
@@ -50,10 +49,12 @@ namespace ResetAPI
             //создаем перемменную типа веб рекюст и вставляем ендпоинт это адрес сайта конвентируем в перемменную 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
             
-            //присваеваем в переменную запрос GET с сервера
+            //присваеваем в переменную запрос GET на сервера
             request.Method = httpMethod.ToString();
-
-            var authHeaer = System.Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(userName +":" + userPassword));
+            //присваеваем переменной логин и пороль конвентируем в байс64 
+            String authHeaer = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(userName + ":" + userPassword));
+            // присваеваем все знаяения в переменную и высылаем на сервер
+            request.Headers.Add("Authorization:"+ authType.ToString() +" " + authHeaer);
 
             //значение using для сравненеие создаем переменной типа HttpWebResponse и присваеваем значение с сервера
             HttpWebResponse response = null;
