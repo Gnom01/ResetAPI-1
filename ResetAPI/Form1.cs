@@ -16,6 +16,9 @@ namespace ResetAPI
             ResetClient rClient = new ResetClient();
             // присвоение адреса сайта в переменную
             rClient.endPoint = textBox2.Text;
+            rClient.authType = autenfikationType.Basic;
+            rClient.userName = textUserName.Text;
+            rClient.userPassword = textPassword.Text;
             // запускаем метод и передаем текст в него
             debugOuput("Rest Client Created");// клиент ресет создан
             //создаем перемменную и присваеваем пустую строчку
