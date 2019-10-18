@@ -48,14 +48,12 @@ namespace ResetAPI
             string strResponseValue = string.Empty;
             //создаем перемменную типа веб рекюст и вставляем ендпоинт это адрес сайта конвентируем в перемменную 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
-            
             //присваеваем в переменную запрос GET на сервера
             request.Method = httpMethod.ToString();
             //присваеваем переменной логин и пороль конвентируем в байс64 
             String authHeaer = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(userName + ":" + userPassword));
             // присваеваем все знаяения в переменную и высылаем на сервер
             request.Headers.Add("Authorization:"+ authType.ToString() +" " + authHeaer);
-
             //значение using для сравненеие создаем переменной типа HttpWebResponse и присваеваем значение с сервера
             HttpWebResponse response = null;
 
